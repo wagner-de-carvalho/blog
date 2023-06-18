@@ -4,9 +4,9 @@ defmodule Blog.Accounts do
   """
 
   import Ecto.Query, warn: false
-  alias Blog.Repo
 
-  alias Blog.Accounts.{User, UserToken, UserNotifier}
+  alias Blog.Accounts.{User, UserNotifier, UserToken}
+  alias Blog.Repo
 
   ## Database getters
 

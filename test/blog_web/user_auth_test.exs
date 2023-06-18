@@ -1,10 +1,10 @@
 defmodule BlogWeb.UserAuthTest do
   use BlogWeb.ConnCase, async: true
 
-  alias Phoenix.LiveView
+  import Blog.AccountsFixtures
   alias Blog.Accounts
   alias BlogWeb.UserAuth
-  import Blog.AccountsFixtures
+  alias Phoenix.LiveView
 
   @remember_me_cookie "_blog_web_user_remember_me"
 
