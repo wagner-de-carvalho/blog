@@ -22,6 +22,19 @@ defmodule Blog.Stories do
   end
 
   @doc """
+  Returns the list of a user's stories .
+
+  ## Examples
+
+      iex> list_stories(user_id)
+      [%Story{}, ...]
+
+  """
+  def list_stories(user_id) do
+    Repo.all(from s in Story, where: s.user_id == ^user_id)
+  end
+
+  @doc """
   Gets a single story.
 
   Raises `Ecto.NoResultsError` if the Story does not exist.
@@ -36,6 +49,24 @@ defmodule Blog.Stories do
 
   """
   def get_story!(id), do: Repo.get!(Story, id)
+
+  @doc """
+  Gets a single story from a user.
+
+  Raises `Ecto.NoResultsError` if the Story does not exist and/or the user does not exist.
+
+  ## Examples
+
+      iex> get_story!(123, 5)
+      %Story{}
+
+      iex> get_story!(456, 5)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_story!(id, user_id) do
+    Repo.one!(from s in Story, where: s.id == ^id and s.user_id == ^user_id)
+  end
 
   @doc """
   Creates a story.
