@@ -3,8 +3,11 @@ defmodule Blog.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @fields [:email, :name, :password]
+
   schema "users" do
     field :email, :string
+    field :name, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
@@ -37,7 +40,7 @@ defmodule Blog.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, @fields)
     |> validate_email(opts)
     |> validate_password(opts)
   end
