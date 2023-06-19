@@ -12,7 +12,6 @@
   <:col :let={{_id, story}} label="Name"><%= story.user.name %></:col>
 
   <:action :let={{_id, story}}>
-   <.link navigate={~p"/stories/#{story}"}>Read</.link>
+    <.link navigate={~p"/stories/#{story}"}>Read</.link>
   </:action>
 </.table>
-
