@@ -4,8 +4,9 @@ defmodule Blog.Stories do
   """
 
   import Ecto.Query, warn: false
-  alias Blog.Repo
 
+  alias Blog.Accounts.User
+  alias Blog.Repo
   alias Blog.Stories.Story
 
   @doc """
@@ -19,6 +20,7 @@ defmodule Blog.Stories do
   """
   def list_stories do
     Repo.all(Story)
+    |> Repo.preload(:user)
   end
 
   @doc """
@@ -48,7 +50,7 @@ defmodule Blog.Stories do
       ** (Ecto.NoResultsError)
 
   """
-  def get_story!(id), do: Repo.get!(Story, id)
+  def get_story!(id), do: Repo.get!(Story, id) |> Repo.preload(:user)
 
   @doc """
   Gets a single story from a user.

@@ -2,6 +2,7 @@ defmodule Blog.Stories.Story do
   @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
+  alias Blog.Accounts.User
 
   @fields [:body, :title, :user_id]
   @required @fields -- [:user_id]
@@ -9,7 +10,7 @@ defmodule Blog.Stories.Story do
   schema "stories" do
     field :body, :string
     field :title, :string
-    field :user_id, :id
+    belongs_to :user, User
 
     timestamps()
   end
