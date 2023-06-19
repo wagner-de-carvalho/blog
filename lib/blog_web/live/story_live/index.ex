@@ -8,8 +8,7 @@ defmodule BlogWeb.StoryLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :stories, Stories.list_stories())}
-    # {:ok, stream(socket, :stories, Stories.list_stories(socket.assigns[:current_user].id))}
+    {:ok, stream(socket, :stories, Stories.list_stories(socket.assigns[:current_user].id))}
   end
 
   @impl true
