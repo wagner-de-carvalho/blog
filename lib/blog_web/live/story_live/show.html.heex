@@ -9,4 +9,15 @@
   <:item title="Name"><%= @story.user.name %></:item>
 </.list>
 
+<div class="mt-20">
+  <.live_component
+    module={BlogWeb.CommentLive.FormComponent}
+    id={:new}
+    title={@page_title}
+    action={:new}
+    comment={@comment}
+    patch={~p"/stories/#{@story.id}"}
+  />
+</div>
+
 <.back navigate={~p"/"}>Back to stories</.back>
