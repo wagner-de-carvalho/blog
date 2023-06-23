@@ -3,6 +3,7 @@ defmodule Blog.Stories.Story do
   use Ecto.Schema
   import Ecto.Changeset
   alias Blog.Accounts.User
+  alias Blog.Comments.Comment
 
   @fields [:body, :title, :user_id]
   @required @fields -- [:user_id]
@@ -11,6 +12,7 @@ defmodule Blog.Stories.Story do
     field :body, :string
     field :title, :string
     belongs_to :user, User
+    has_many :comments, Comment, on_delete: :delete_all
 
     timestamps()
   end

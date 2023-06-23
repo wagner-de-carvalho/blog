@@ -4,7 +4,7 @@ defmodule Blog.Comments.Comment do
   import Ecto.Changeset
   alias Blog.Stories.Story
 
-  @fields [:message]
+  @fields [:message, :story_id]
   @required @fields
 
   schema "comments" do
