@@ -17,8 +17,13 @@
     action={:new}
     comment={@comment}
     story_id={@story.id}
+    current_user_id={@current_user_id}
     patch={~p"/stories/#{@story.id}"}
   />
 </div>
+
+<.list>
+  <:item :for={comment <- @story.comments} title={"Comment by #{if comment.user do comment.user.name else "Anon" end}"}><%= comment.message %></:item>
+</.list>
 
 <.back navigate={~p"/"}>Back to stories</.back>

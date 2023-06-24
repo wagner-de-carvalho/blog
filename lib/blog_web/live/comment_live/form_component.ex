@@ -19,7 +19,8 @@ defmodule BlogWeb.CommentLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input field={@form[:story_id]} type="hidden" value={@story_id} />
+        <.input field={@form[:story_id]} type="hidden" readonly value={@story_id} />
+        <.input field={@form[:user_id]} type="hidden" readonly value={@current_user_id} />
         <.input field={@form[:message]} type="text" label="Message" />
         <:actions>
           <.button phx-disable-with="Saving...">Save Comment</.button>

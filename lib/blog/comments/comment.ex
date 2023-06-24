@@ -3,13 +3,15 @@ defmodule Blog.Comments.Comment do
   use Ecto.Schema
   import Ecto.Changeset
   alias Blog.Stories.Story
+  alias Blog.Accounts.User
 
-  @fields [:message, :story_id]
-  @required @fields
+  @fields [:message, :story_id, :user_id]
+  @required @fields -- [:user_id]
 
   schema "comments" do
     field :message, :string
     belongs_to :story, Story
+    belongs_to :user, User
 
     timestamps()
   end

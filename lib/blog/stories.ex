@@ -5,7 +5,6 @@ defmodule Blog.Stories do
 
   import Ecto.Query, warn: false
 
-  alias Blog.Accounts.User
   alias Blog.Repo
   alias Blog.Stories.Story
 
@@ -50,7 +49,8 @@ defmodule Blog.Stories do
       ** (Ecto.NoResultsError)
 
   """
-  def get_story!(id), do: Repo.get!(Story, id) |> Repo.preload(:user)
+  def get_story!(id),
+    do: Repo.get!(Story, id) |> Repo.preload([:user, :comments]) |> Repo.preload(comments: :user)
 
   @doc """
   Gets a single story from a user.
