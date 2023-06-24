@@ -5,7 +5,6 @@ defmodule BlogWeb.UserConfirmationLiveTest do
   import Blog.AccountsFixtures
 
   alias Blog.Accounts
-  alias Blog.Repo
 
   setup do
     %{user: user_fixture()}

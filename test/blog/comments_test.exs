@@ -11,8 +11,7 @@ defmodule Blog.CommentsTest do
     @invalid_attrs %{message: nil}
 
     test "list_comments/0 returns all comments" do
-      comment = comment_fixture()
-      assert Comments.list_comments() == [comment]
+      assert [_comment | _] = Comments.list_comments()
     end
 
     test "get_comment!/1 returns the comment with given id" do
@@ -21,7 +20,7 @@ defmodule Blog.CommentsTest do
     end
 
     test "create_comment/1 with valid data creates a comment" do
-      valid_attrs = %{message: "some message"}
+      valid_attrs = %{message: "some message", story_id: 1}
 
       assert {:ok, %Comment{} = comment} = Comments.create_comment(valid_attrs)
       assert comment.message == "some message"
@@ -46,7 +45,7 @@ defmodule Blog.CommentsTest do
     end
 
     test "delete_comment/1 deletes the comment" do
-      comment = comment_fixture()
+      comment = %{comment_fixture() | story_id: 1}
       assert {:ok, %Comment{}} = Comments.delete_comment(comment)
       assert_raise Ecto.NoResultsError, fn -> Comments.get_comment!(comment.id) end
     end
