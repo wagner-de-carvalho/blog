@@ -8,8 +8,7 @@ defmodule BlogWeb.CommentLive.FormComponent do
     ~H"""
     <div>
       <.header>
-        <%= @title %>
-        <:subtitle>Use this form to manage comment records in your database.</:subtitle>
+        Leave a comment here
       </.header>
 
       <.simple_form
